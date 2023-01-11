@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [Range(1,20)] public float speed = 5;
     [Range(1,90)]public float rotationRate = 60;
     public GameObject prefab;
+    public Transform bOrigin;
 
     // Start is called before the first frame update
     void Start()
@@ -48,10 +49,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("Gun Noise");
-            GetComponent<AudioSource>().Play();
-            GameObject go = Instantiate(prefab, transform.position, transform.rotation);
-            Destroy(go, 5);
+            //Debug.Log("Gun Noise");
+            GameObject go = Instantiate(prefab, bOrigin.position, bOrigin.rotation);
         }
 
     }
