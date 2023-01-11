@@ -411,8 +411,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8.41
-  rotationRate: 0
+  rotationRate: 60.3
   prefab: {fileID: 5559442011197048731, guid: 1e992fcb5c6502c429739cd007ce57e3, type: 3}
+  bOrigin: {fileID: 0}
 --- !u!4 &1582136760 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4933916612215586949, guid: 430f886ea9eed61468f73a8b2ecc3bd8, type: 3}
@@ -594,6 +595,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1045004190096883217, guid: 430f886ea9eed61468f73a8b2ecc3bd8, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4931851356372219863, guid: 430f886ea9eed61468f73a8b2ecc3bd8, type: 3}
       propertyPath: m_Name
       value: SM_Ship_Cruiser_03
@@ -641,6 +646,14 @@ PrefabInstance:
     - target: {fileID: 4933916612215586949, guid: 430f886ea9eed61468f73a8b2ecc3bd8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134998911224873444, guid: 430f886ea9eed61468f73a8b2ecc3bd8, type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 2126001728365018106, guid: 1e992fcb5c6502c429739cd007ce57e3, type: 3}
+    - target: {fileID: 8134998911224873444, guid: 430f886ea9eed61468f73a8b2ecc3bd8, type: 3}
+      propertyPath: bOrigin
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 430f886ea9eed61468f73a8b2ecc3bd8, type: 3}
