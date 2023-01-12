@@ -281,6 +281,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198902368652009602, guid: 06d2c182145e6f442b2f802c23bdcc63, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198902368652009602, guid: 06d2c182145e6f442b2f802c23bdcc63, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198902368652009602, guid: 06d2c182145e6f442b2f802c23bdcc63, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 198902368652009602, guid: 06d2c182145e6f442b2f802c23bdcc63, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 199582953557346584, guid: 06d2c182145e6f442b2f802c23bdcc63, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
