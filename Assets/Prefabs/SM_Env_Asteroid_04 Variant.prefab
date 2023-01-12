@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1976545440620104, guid: 35ab5042a61b422478913511a2f89312, type: 3}
       propertyPath: m_Name
-      value: SM_Env_Asteroid_04
+      value: SM_Env_Asteroid_04 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4012655929079808, guid: 35ab5042a61b422478913511a2f89312, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +55,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 64667277926989346, guid: 35ab5042a61b422478913511a2f89312, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 64667277926989346, guid: 35ab5042a61b422478913511a2f89312, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 35ab5042a61b422478913511a2f89312, type: 3}
+--- !u!1 &389272774447443822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1976545440620104, guid: 35ab5042a61b422478913511a2f89312, type: 3}
+  m_PrefabInstance: {fileID: 387868321614491942}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &6616559215608477259
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389272774447443822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 124.88316
+  m_Center: {x: 0.4796829, y: 123.0686, z: 253.5314}
+--- !u!114 &-5981737380308309290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389272774447443822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d777938452b0d45bb4810841e94598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  rotationRate: 20
+  explosion: {fileID: 5901915999362431238, guid: 067cfb94df316084bae29973bf08e392, type: 3}
