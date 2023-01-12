@@ -12,7 +12,7 @@ public class Asteroid : MonoBehaviour
     Vector3 rotation;
 
     private void OnDestroy()
-    {
+    {       
         Instantiate(explosion, transform.position, transform.rotation);
     }
 
