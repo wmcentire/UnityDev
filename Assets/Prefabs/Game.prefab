@@ -48,4 +48,6 @@ MonoBehaviour:
   maxTime: 5
   radius: 100
   spawnLocation: {fileID: 4933916612215586949, guid: 430f886ea9eed61468f73a8b2ecc3bd8, type: 3}
-  prefab: {fileID: 6253772830836923715, guid: 66996cd2a1165404e8be8e877e36e97c, type: 3}
+  prefabs:
+  - {fileID: 6253772830836923715, guid: 66996cd2a1165404e8be8e877e36e97c, type: 3}
+  - {fileID: 6253772830836923715, guid: 797e6335edec5254480410e49661f8e3, type: 3}

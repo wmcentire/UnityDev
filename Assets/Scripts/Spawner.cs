@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     [Range(1, 10)] public float maxTime = 5;
     [Range(1, 100)] public float radius = 100;
     public Transform spawnLocation = null;
-    public GameObject prefab;
+    public GameObject[] prefabs;
 
     float spawnTimer = 0;
 
@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour
             spawnTimer = Random.Range(minTime, maxTime);
 
             Vector3 position = spawnLocation.position + Quaternion.AngleAxis(Random.value * 360.0f, Vector3.up) * (Vector3.forward * radius);
-            Instantiate(prefab, position, Quaternion.identity);
+            Instantiate(prefabs[Random.RandomRange(0,prefabs.Length)], position, Quaternion.identity);
         }
     }
 }
