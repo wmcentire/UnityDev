@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d84f55d0a54a8d439db95ca5b72509c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 20
   rotationRate: 60
   prefab: {fileID: 2126001728365018106, guid: 1e992fcb5c6502c429739cd007ce57e3, type: 3}
   bOrigin: {fileID: 1045004190096883217}
