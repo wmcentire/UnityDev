@@ -13,5 +13,12 @@ public class AsteroidGameManager : MonoBehaviour
     public void AddPoints(int points)
     {
         score += points;
+        scoreUI.text = score.ToString();
     }
+
+    public void SetGameOver()
+    {
+        gameoverUI.SetActive(true);
+    }
+    
 }
