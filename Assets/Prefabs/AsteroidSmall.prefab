@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AsteroidSmall
       objectReference: {fileID: 0}
+    - target: {fileID: 1976545440620104, guid: 35ab5042a61b422478913511a2f89312, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4012655929079808, guid: 35ab5042a61b422478913511a2f89312, type: 3}
       propertyPath: m_RootOrder
       value: 0
