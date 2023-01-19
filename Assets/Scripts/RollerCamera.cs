@@ -35,6 +35,6 @@ public class RollerCamera : MonoBehaviour
         Vector3 offset = rotation * Vector3.back * distance;
 
         transform.position = target.position + offset;
-        transform.rotation = Quaternion.LookRotation(-target.transform.position);
+        transform.rotation = Quaternion.LookRotation(-offset);
     }
 }
