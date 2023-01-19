@@ -13,11 +13,17 @@ public class Colidable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        if (hitTagName == string.Empty || other.gameObject.CompareTag(hitTagName))
+        {
+            onEnter?.Invoke(other.gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        if(hitTagName == string.Empty || collision.gameObject.CompareTag(hitTagName))
+        {
+            onEnter?.Invoke(collision.gameObject);  
+        }
     }
 }
