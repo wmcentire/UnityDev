@@ -6,9 +6,9 @@ using UnityEngine;
 public class RollerCamera : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    [SerializeField, Range(2,20)] private float distance = 2;
-    [SerializeField, Range(20,80)] private float pitch = 2;
-    [SerializeField, Range(0.1f,5)] private float sensitivity;
+    [SerializeField, Range(2,20)] private float distance = 10;
+    [SerializeField, Range(20,80)] private float pitch = 10;
+    [SerializeField, Range(0.1f,5)] private float sensitivity = 1;
 
     private float yaaaas = 0;
 
