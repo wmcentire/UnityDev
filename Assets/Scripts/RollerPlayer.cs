@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RollerPlayer : MonoBehaviour
 {
+    private int score = 0;
     [SerializeField] private Transform view;
     private Vector3 force;
     private Rigidbody rb;
@@ -36,5 +37,10 @@ public class RollerPlayer : MonoBehaviour
     private void FixedUpdate()
     {
         rb.AddForce(force);
+    }
+
+    public void AddPoints(int points)
+    {
+        score += points;
     }
 }

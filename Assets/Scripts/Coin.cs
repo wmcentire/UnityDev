@@ -19,7 +19,10 @@ public class Coin : Colidable
 
     void OnCoinPickup(GameObject go) 
     {
-        Debug.Log("pickup");
+        if (go.TryGetComponent<RollerPlayer>(out RollerPlayer player))
+        {
+            player.AddPoints(10);
+        }
         Instantiate(fx, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
