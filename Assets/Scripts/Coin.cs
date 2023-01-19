@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Coin : Colidable
 {
+    [SerializeField] GameObject fx;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,6 @@ public class Coin : Colidable
     void OnCoinPickup(GameObject go) 
     {
         Debug.Log("pickup");
-
+        Instantiate(fx, transform.position, Quaternion.identity);
     }
 }
