@@ -8,6 +8,8 @@ public class Colidable : MonoBehaviour
 
     public delegate void CollisionEvent(GameObject other);
     public CollisionEvent onEnter;
+    public CollisionEvent onExit;
+    public CollisionEvent onStay;
 
     private void OnTriggerEnter(Collider other)
     {
