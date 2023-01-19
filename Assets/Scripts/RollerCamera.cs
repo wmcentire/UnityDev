@@ -7,7 +7,11 @@ public class RollerCamera : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField, Range(2,20)] private float distance = 2;
-    [SerializeField, Range(2,20)] private float offset = 2;
+    [SerializeField, Range(20,80)] private float pitch = 2;
+    [SerializeField, Range(0.1f,5)] private float sensitivity;
+
+    private float yaaaas = 0;
+
 
     private void Start()
     {
@@ -21,7 +25,16 @@ public class RollerCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = target.position + (Vector3.up * distance) + (Vector3.back * offset);
-        transform.rotation = Quaternion.LookRotation(target.transform.position);
+        yaaaas += Input.GetAxis("Horizontal") * sensitivity;
+
+        Quaternion qYaw = Quaternion.AngleAxis(yaaaas, Vector3.up);
+        Quaternion qPitch = Quaternion.AngleAxis(pitch, Vector3.right);
+
+        Quaternion rotation = qYaw * qPitch;
+
+        Vector3 offset = rotation * Vector3.back * distance;
+
+        transform.position = target.position + offset;
+        transform.rotation = Quaternion.LookRotation(-target.transform.position);
     }
 }
