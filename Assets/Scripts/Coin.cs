@@ -21,5 +21,6 @@ public class Coin : Colidable
     {
         Debug.Log("pickup");
         Instantiate(fx, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
