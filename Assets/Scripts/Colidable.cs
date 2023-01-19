@@ -19,11 +19,43 @@ public class Colidable : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (hitTagName == string.Empty || other.gameObject.CompareTag(hitTagName))
+        {
+            onExit?.Invoke(other.gameObject);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (hitTagName == string.Empty || other.gameObject.CompareTag(hitTagName))
+        {
+            onStay?.Invoke(other.gameObject);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(hitTagName == string.Empty || collision.gameObject.CompareTag(hitTagName))
         {
             onEnter?.Invoke(collision.gameObject);  
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (hitTagName == string.Empty || collision.gameObject.CompareTag(hitTagName))
+        {
+            onExit?.Invoke(collision.gameObject);
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (hitTagName == string.Empty || collision.gameObject.CompareTag(hitTagName))
+        {
+            onStay?.Invoke(collision.gameObject);
         }
     }
 }
