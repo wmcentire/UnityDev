@@ -23,6 +23,11 @@ public class RollerCamera : MonoBehaviour
         
     }
 
+    public void SetTarget(Transform transform)
+    {
+        this.target = transform;
+    }
+
     private void LateUpdate()
     {
         yaaaas += Input.GetAxis("Mouse X") * sensitivity;
