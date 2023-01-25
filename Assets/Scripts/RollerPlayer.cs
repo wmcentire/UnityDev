@@ -17,6 +17,14 @@ public class RollerPlayer : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        view = Camera.main.transform;
+        Camera.main.GetComponent<RollerCamera>().SetTarget(transform);
+
+        GetComponent<Health>().onDamage += OnDamage;
+        GetComponent<Health>().onDeath += OnDeath;
+        RollerGameManager.Instance.SetHealth((int)GetComponent<Health>().health);
+
     }
 
     // Update is called once per frame
@@ -38,7 +46,6 @@ public class RollerPlayer : MonoBehaviour
         }
         //implement grounded checker
 
-        RollerGameManager.Instance.SetHealth(50);
     }
 
     private void FixedUpdate()
@@ -50,5 +57,15 @@ public class RollerPlayer : MonoBehaviour
     {
         score += points;
         RollerGameManager.Instance.SetScore(score);
+    }
+
+    public void OnDamage()
+    {
+        RollerGameManager.Instance.SetHealth((int)GetComponent<Health>().health);
+    }
+
+    public void OnDeath()
+    {
+        RollerGameManager.Instance.SetGameOver();
     }
 }

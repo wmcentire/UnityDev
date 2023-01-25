@@ -13,19 +13,10 @@ public class RollerCamera : MonoBehaviour
     private float yaaaas = 0;
 
 
-    private void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
-        
-    }
-
     public void SetTarget(Transform transform)
     {
         this.target = transform;
+        yaaaas = target.rotation.eulerAngles.y;
     }
 
     private void LateUpdate()

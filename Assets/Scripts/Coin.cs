@@ -2,28 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : Colidable
+[RequireComponent(typeof(CollisionEvent))]
+public class Coin : Interactable
 {
-    [SerializeField] GameObject fx;
-    // Start is called before the first frame update
     void Start()
     {
-        onEnter += OnCoinPickup;
+        GetComponent<CollisionEvent>().onEnter += OnInteract;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void OnCoinPickup(GameObject go) 
+    public override void OnInteract(GameObject go)
     {
         if (go.TryGetComponent<RollerPlayer>(out RollerPlayer player))
         {
-            player.AddPoints(10);
+            player.AddPoints(100);
         }
-        Instantiate(fx, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+
+        if (interactFX != null) Instantiate(interactFX, transform.position, Quaternion.identity);
+        if (destroyOnInteract) Destroy(gameObject);
     }
 }
