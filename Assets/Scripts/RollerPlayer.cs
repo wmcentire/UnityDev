@@ -11,6 +11,8 @@ public class RollerPlayer : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] int magnitude = 2;
     [SerializeField] int jumpForce = 50;
+    [SerializeField] private float groundRayLength = 1;
+    [SerializeField] private LayerMask groundLayer;
     private bool touchGround = true;
 
     // Start is called before the first frame update
@@ -37,12 +39,15 @@ public class RollerPlayer : MonoBehaviour
         Quaternion viewSpace = Quaternion.AngleAxis(view.rotation.eulerAngles.y, Vector3.up);
         force = view.rotation * (direction * magnitude);
 
+        Ray ray = new Ray(transform.position, Vector3.down);
+        bool onGround = Physics.Raycast(ray, groundRayLength, groundLayer);
+        Debug.DrawRay(transform.position, ray.direction * groundRayLength);
+
         if (Input.GetButtonDown("Jump") && touchGround)
         {
             // touchGround = false;
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            view = Camera.main.transform;
-            Camera.main.GetComponent<RollerCamera>().SetTarget(transform);
+            
         }
         //implement grounded checker
 
