@@ -11,7 +11,7 @@ public class RollerPlayer : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] int magnitude = 2;
     [SerializeField] int jumpForce = 50;
-    [SerializeField] private float groundRayLength = 1;
+    [SerializeField] private float groundRayLength = 0.6f;
     [SerializeField] private LayerMask groundLayer;
     private bool touchGround = true;
 
@@ -43,7 +43,7 @@ public class RollerPlayer : MonoBehaviour
         bool onGround = Physics.Raycast(ray, groundRayLength, groundLayer);
         Debug.DrawRay(transform.position, ray.direction * groundRayLength);
 
-        if (Input.GetButtonDown("Jump") && touchGround)
+        if (Input.GetButtonDown("Jump") && onGround)
         {
             // touchGround = false;
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);

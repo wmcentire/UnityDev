@@ -60,6 +60,10 @@ MonoBehaviour:
   view: {fileID: 0}
   magnitude: 100
   jumpForce: 80
+  groundRayLength: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &5735181512174892335
 MonoBehaviour:
   m_ObjectHideFlags: 0
