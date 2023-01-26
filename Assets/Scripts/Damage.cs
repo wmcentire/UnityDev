@@ -21,5 +21,9 @@ public class Damage : Interactable
         {
             health.OnApplyDamage(damage * ((oneTime) ? 1 : Time.deltaTime));
         }
+        if (destroyOnInteract)
+        {
+            Destroy(gameObject);
+        }
     }
 }

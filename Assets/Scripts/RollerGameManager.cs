@@ -9,11 +9,64 @@ public class RollerGameManager : Singleton<RollerGameManager>
     [SerializeField] Slider healthMeter;
     [SerializeField] TMP_Text scoreUI;
     [SerializeField] GameObject GameOverUI;
+    [SerializeField] GameObject titleUI;
+
+    [SerializeField] AudioSource[] gameSongs;
+
     [SerializeField] GameObject playerPrefab;
     [SerializeField] Transform plSpawnPoint;
+
+    public enum State
+    {
+        TITLE,
+        START_GAME,
+        PLAY_GAME,
+        GAME_OVER
+    }
+    State state = State.TITLE;
+    float stateTimer = 0;
     public void Start()
     {
-        Instantiate(playerPrefab, plSpawnPoint.position, plSpawnPoint.rotation);
+
+    }
+
+    private void Update()
+    {
+        switch (state)
+        {
+            case State.START_GAME:
+                titleUI.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                Instantiate(playerPrefab, plSpawnPoint.position, plSpawnPoint.rotation);
+                state = State.PLAY_GAME;
+                //gameSongs[2].Stop();
+                //gameSongs[0].Play();
+                break;
+                
+            case State.PLAY_GAME:
+                
+                break ;
+                
+            case State.GAME_OVER:
+                //gameSongs[0].Stop();
+                //gameSongs[1].Play();
+                stateTimer -= Time.deltaTime;
+                if(stateTimer <= 0)
+                {
+                    GameOverUI.SetActive(false);
+                    state = State.TITLE;
+                }
+                break;
+
+            case State.TITLE:
+                //gameSongs[1].Stop();
+                //gameSongs[2].Play();
+                titleUI.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                break;
+        }
     }
 
     public void SetHealth(int health)
@@ -29,5 +82,12 @@ public class RollerGameManager : Singleton<RollerGameManager>
     public void SetGameOver()
     {
         GameOverUI.SetActive(true);
+        state = State.GAME_OVER;
+        stateTimer = 5;
+    }
+
+    public void StartGame()
+    {
+        state = State.START_GAME;
     }
 }
