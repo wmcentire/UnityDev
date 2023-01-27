@@ -56,6 +56,14 @@ public class RollerGameManager : Singleton<RollerGameManager>
                 {
                     state = State.TITLE;
                 }
+                if (gameSongs[1].isPlaying)
+                {
+
+                }
+                else
+                {
+                    gameSongs[1].Play();
+                }
                 break ;
                 
             case State.GAME_OVER:
