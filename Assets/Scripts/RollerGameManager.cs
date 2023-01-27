@@ -40,28 +40,38 @@ public class RollerGameManager : Singleton<RollerGameManager>
                 Cursor.visible = false;
                 Instantiate(playerPrefab, plSpawnPoint.position, plSpawnPoint.rotation);
                 state = State.PLAY_GAME;
-                //gameSongs[2].Stop();
-                //gameSongs[0].Play();
+                gameSongs[0].Stop();
+                //gameSongs[1].Play();
                 break;
                 
             case State.PLAY_GAME:
-                
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    state = State.TITLE;
+                }
                 break ;
                 
             case State.GAME_OVER:
                 //gameSongs[0].Stop();
                 //gameSongs[1].Play();
                 stateTimer -= Time.deltaTime;
-                if(stateTimer <= 0)
+                if(stateTimer <= 0 || Input.GetMouseButtonDown(0))
                 {
                     GameOverUI.SetActive(false);
-                    state = State.TITLE;
+                    state = State.START_GAME;
                 }
                 break;
 
             case State.TITLE:
                 //gameSongs[1].Stop();
-                //gameSongs[2].Play();
+                if (gameSongs[0].isPlaying)
+                {
+
+                }
+                else
+                {
+                    gameSongs[0].Play();
+                }
                 titleUI.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
