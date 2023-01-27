@@ -41,7 +41,14 @@ public class RollerGameManager : Singleton<RollerGameManager>
                 Instantiate(playerPrefab, plSpawnPoint.position, plSpawnPoint.rotation);
                 state = State.PLAY_GAME;
                 gameSongs[0].Stop();
-                //gameSongs[1].Play();
+                if (gameSongs[1].isPlaying)
+                {
+
+                }
+                else
+                {
+                    gameSongs[1].Play();
+                }
                 break;
                 
             case State.PLAY_GAME:
@@ -63,7 +70,7 @@ public class RollerGameManager : Singleton<RollerGameManager>
                 break;
 
             case State.TITLE:
-                //gameSongs[1].Stop();
+                gameSongs[1].Stop();
                 if (gameSongs[0].isPlaying)
                 {
 
