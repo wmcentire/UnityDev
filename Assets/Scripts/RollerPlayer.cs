@@ -50,6 +50,12 @@ public class RollerPlayer : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Destroy(gameObject);
+        }
+
         //implement grounded checker
 
     }
@@ -78,5 +84,11 @@ public class RollerPlayer : MonoBehaviour
     public void OnHeal()
     {
         RollerGameManager.Instance.SetHealth((int)GetComponent<Health>().health);
+    }
+
+    public void OnWin()
+    {
+        RollerGameManager.Instance.WinGame();
+        Destroy(gameObject);
     }
 }

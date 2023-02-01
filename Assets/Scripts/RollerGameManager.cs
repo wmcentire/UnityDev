@@ -10,6 +10,7 @@ public class RollerGameManager : Singleton<RollerGameManager>
     [SerializeField] TMP_Text scoreUI;
     [SerializeField] GameObject GameOverUI;
     [SerializeField] GameObject titleUI;
+    [SerializeField] GameObject gameWinUI;
 
     [SerializeField] AudioSource[] gameSongs;
 
@@ -21,7 +22,8 @@ public class RollerGameManager : Singleton<RollerGameManager>
         TITLE,
         START_GAME,
         PLAY_GAME,
-        GAME_OVER
+        GAME_OVER,
+        GAME_WIN
     }
     State state = State.TITLE;
     float stateTimer = 0;
@@ -91,6 +93,14 @@ public class RollerGameManager : Singleton<RollerGameManager>
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 break;
+            case State.GAME_WIN:
+                stateTimer -= Time.deltaTime;
+                if (stateTimer <= 0 || Input.GetMouseButtonDown(0))
+                {
+                    gameWinUI.SetActive(false);
+                    state = State.TITLE;
+                }
+                break;
         }
     }
 
@@ -114,5 +124,13 @@ public class RollerGameManager : Singleton<RollerGameManager>
     public void StartGame()
     {
         state = State.START_GAME;
+    }
+
+    public void WinGame()
+    {
+        gameWinUI.SetActive(true);
+
+        state = State.GAME_WIN;
+        stateTimer = 5;
     }
 }
