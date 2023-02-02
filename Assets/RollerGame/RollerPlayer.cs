@@ -11,8 +11,10 @@ public class RollerPlayer : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] int magnitude = 2;
     [SerializeField] int jumpForce = 50;
+    [SerializeField] int slamForce = 100;
     [SerializeField] private float groundRayLength = 0.6f;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private GameObject groundFX;
     private bool touchGround = true;
 
     // Start is called before the first frame update
@@ -56,8 +58,18 @@ public class RollerPlayer : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //implement grounded checker
+        if(Input.GetKeyDown(KeyCode.LeftShift) && !onGround)
+        {
+            rb.AddForce(Vector3.down * slamForce, ForceMode.Impulse);
 
+        }
+        Ray ray2 = new Ray(transform.position, Vector3.down);
+        onGround = Physics.Raycast(ray, 2, groundLayer);
+        if (onGround)
+        {
+            Instantiate(groundFX, gameObject.transform.position, transform.rotation);
+        }
+        
     }
 
     private void FixedUpdate()

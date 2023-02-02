@@ -60,10 +60,12 @@ MonoBehaviour:
   view: {fileID: 0}
   magnitude: 100
   jumpForce: 80
+  slamForce: 800
   groundRayLength: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  groundFX: {fileID: 1267369252621254, guid: f6d201bc8595a5b4f92f70df92d33aed, type: 3}
 --- !u!114 &5735181512174892335
 MonoBehaviour:
   m_ObjectHideFlags: 0
