@@ -10,8 +10,8 @@ public class AnimationEffector : Interactable
 	
 	private void Start()
 	{
-		GetComponent<CollisionEvent>().onEnter = OnInteract;
-		GetComponent<CollisionEvent>().onExit = OnInteract;
+		GetComponent<CollisionEvent>().onEnter += OnInteract;
+		GetComponent<CollisionEvent>().onExit += OnInteract;
 	}
 
 	public override void OnInteract(GameObject target)
