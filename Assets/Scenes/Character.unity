@@ -1081,6 +1081,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: X BotDev
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 48cfc0a87df2e9744b1544971f8354b3, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4da1117f73972b5409a42f415113482e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48cfc0a87df2e9744b1544971f8354b3, type: 3}
 --- !u!4 &1237468247 stripped
@@ -1226,7 +1230,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590526657}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
