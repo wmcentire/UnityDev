@@ -10,6 +10,7 @@ public class CharacterPlayer : MonoBehaviour
     [SerializeField] private float gravity;
     [SerializeField] private float turnRate = 10;
     [SerializeField] private float jumpHeight = 2;
+    [SerializeField] 
     
     CharacterController controller;
     PlayerInputActions playerInput;
