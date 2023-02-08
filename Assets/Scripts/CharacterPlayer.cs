@@ -113,4 +113,15 @@ public class CharacterPlayer : MonoBehaviour
             Debug.Log("Jump");
         }
     }
+
+    public void OnLeftFootSpawn(GameObject go)
+    {
+        Transform bone = animator.GetBoneTransform(HumanBodyBones.LeftFoot);
+        Instantiate(go, bone.position, bone.rotation);
+    }
+    public void OnRightFootSpawn(GameObject go)
+    {
+        Transform bone = animator.GetBoneTransform(HumanBodyBones.RightFoot);
+        Instantiate(go, bone.position, bone.rotation);
+    }
 }
