@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class CharacterPlayer : MonoBehaviour
 {
     [SerializeField] private float speed = 5;
@@ -10,12 +11,13 @@ public class CharacterPlayer : MonoBehaviour
     [SerializeField] private float gravity;
     [SerializeField] private float turnRate = 10;
     [SerializeField] private float jumpHeight = 2;
-    [SerializeField] 
+    [SerializeField] private Animator animator;
     
     CharacterController controller;
     PlayerInputActions playerInput;
     Camera mainCamera;
     Vector3 velocity = Vector3.zero;
+    float InAirtime = 0;
 
     private void OnEnable()
     {
@@ -46,15 +48,18 @@ public class CharacterPlayer : MonoBehaviour
 
         if (controller.isGrounded)
         {
+            InAirtime = 0; 
             velocity.x = direction.x * speed;
             velocity.z = direction.z * speed;
             if (playerInput.Player.Jump.triggered)
             {
+                animator.SetTrigger("Jump");
                 velocity.y = Mathf.Sqrt(jumpHeight * -3 * gravity);
             }
         }
         else
         {
+            InAirtime += Time.deltaTime;
             velocity.y += gravity * Time.deltaTime;
             velocity.x = direction.x * speed / 2;
             velocity.z = direction.z * speed / 2;
@@ -62,7 +67,17 @@ public class CharacterPlayer : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
         Vector3 look = direction;
         look.y = 0;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), turnRate * Time.deltaTime);
+        if(look.magnitude > 0)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), turnRate * Time.deltaTime);
+        }
+
+        //set animator parameters
+        animator.SetFloat("Speed", controller.velocity.magnitude);
+        animator.SetFloat("VelocityY", controller.velocity.y);
+        animator.SetFloat("InAirTime", InAirtime);
+        animator.SetBool("isGrounded", controller.isGrounded);
+
     }
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
