@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(CharacterController))]
 public class CharacterPlayer : MonoBehaviour
@@ -12,37 +13,33 @@ public class CharacterPlayer : MonoBehaviour
     [SerializeField] private float turnRate = 10;
     [SerializeField] private float jumpHeight = 2;
     [SerializeField] private Animator animator;
+    [SerializeField] private InputRouter router;
     
     CharacterController controller;
-    PlayerInputActions playerInput;
     Camera mainCamera;
+    Vector2 inputAxis;
+
     Vector3 velocity = Vector3.zero;
     float InAirtime = 0;
 
-    private void OnEnable()
-    {
-        playerInput.Enable();
-    }
-    private void OnDisable()
-    {
-        playerInput.Disable();
-    }
-    private void Awake()
-    {
-        playerInput = new PlayerInputActions();
-    }
+    
     void Start()
     {
         controller = GetComponent<CharacterController>();
         mainCamera = Camera.main;
+
+        router.jumpEvent += OnJump;
+        router.moveEvent += OnMove;
+        router.fireEvent += OnFire;
+        router.fireStopEvent += OnFireStop;
     }
 
     void Update()
     {
         Vector3 direction = Vector3.zero;
-        Vector2 axis = playerInput.Player.Move.ReadValue<Vector2>();
-        direction.x = Input.GetAxis("Horizontal");
-        direction.z = Input.GetAxis("Vertical");
+
+        direction.x = inputAxis.x;
+        direction.z = inputAxis.y;
         
         direction = mainCamera.transform.TransformDirection(direction);
 
@@ -51,11 +48,7 @@ public class CharacterPlayer : MonoBehaviour
             InAirtime = 0; 
             velocity.x = direction.x * speed;
             velocity.z = direction.z * speed;
-            if (playerInput.Player.Jump.triggered)
-            {
-                animator.SetTrigger("Jump");
-                velocity.y = Mathf.Sqrt(jumpHeight * -3 * gravity);
-            }
+            
         }
         else
         {
@@ -123,5 +116,30 @@ public class CharacterPlayer : MonoBehaviour
     {
         Transform bone = animator.GetBoneTransform(HumanBodyBones.RightFoot);
         Instantiate(go, bone.position, bone.rotation);
+    }
+
+    public void OnJump()
+    {
+        if (controller.isGrounded)
+        {
+            animator.SetTrigger("Jump");
+            velocity.y = Mathf.Sqrt(jumpHeight * -3 * gravity);
+        }
+    }
+
+    public void OnFire()
+    {
+
+    }
+
+    public void OnFireStop()
+    {
+
+    }
+
+
+    public void OnMove(Vector2 axis)
+    {
+        inputAxis = axis;
     }
 }
