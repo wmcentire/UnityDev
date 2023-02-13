@@ -9,15 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222be85be245ffb4cace2a2ff70eb8c9, type: 3}
-  m_Name: FootStep
+  m_Script: {fileID: 11500000, guid: c7f588af1e7ee1045847c02cf2db9f2d, type: 3}
+  m_Name: PlayerData
   m_EditorClassIdentifier: 
-  audioClips:
-  - {fileID: 8300000, guid: 27916d55958fa404f8b1dc6fcaa006db, type: 3}
-  volume: 1
-  volumeRandom: 0.078
-  pitch: 0
-  pitchRandom: 5.14
-  spacialBlend: 0
-  loop: 0
-  type: 0
+  speed: 5
+  hitForce: 2
+  gravity: -10
+  turnRate: 10
+  jumpHeight: 2

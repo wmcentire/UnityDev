@@ -1370,12 +1370,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93255a400f94e344a535636da9e6b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  hitForce: 2
-  gravity: -9.81
-  turnRate: 2
-  jumpHeight: 2
+  playerData: {fileID: 11400000, guid: c183fe699f6519145bb9263c697d4ad1, type: 2}
   animator: {fileID: 1590526664}
+  router: {fileID: 11400000, guid: e778c8ee9e9a14941a49ab05f9531aad, type: 2}
 --- !u!143 &1590526663
 CharacterController:
   m_ObjectHideFlags: 0
