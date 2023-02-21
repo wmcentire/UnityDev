@@ -7,6 +7,7 @@ public class CharacterPlayer : MonoBehaviour
     [SerializeField] private PlayerData playerData;
     [SerializeField] private Animator animator;
     [SerializeField] private InputRouter router;
+    [SerializeField] private Weapon weapon;
     
     CharacterController controller;
     Camera mainCamera;
@@ -122,14 +123,18 @@ public class CharacterPlayer : MonoBehaviour
 
     public void OnFire()
     {
-        animator.SetTrigger("Attack");
+        weapon.Use();
     }
 
     public void OnFireStop()
     {
-
+        weapon.StopUse();
     }
 
+    public void OnAnimEventItemUse()
+    {
+        weapon.OnAnimEventItemUse();
+    }
 
     public void OnMove(Vector2 axis)
     {

@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public abstract class Spawner : MonoBehaviour
 {
     [Range(1, 10)] public float minTime = 3;
     [Range(1, 10)] public float maxTime = 5;
-    [Range(1, 100)] public float radius = 100;
+    [Range(1, 100)] public float radius = 2;
     public Transform spawnLocation = null;
     public GameObject[] prefabs;
 
     float spawnTimer = 0;
 
-    void Start()
+    protected void Start()
     {
         spawnTimer = Random.Range(minTime, maxTime);
     }
 
+    public abstract void Clear();
+
+    public abstract void Spawn();
 
     void Update()
     {

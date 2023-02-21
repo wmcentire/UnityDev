@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] float maxHealth = 100;
 
-    public float health { get; set; }
+    [SerializeField] public float health;
 
     private bool isDead = false;
 
@@ -27,6 +27,7 @@ public class Health : MonoBehaviour
 
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHealth);
+        Debug.Log(health);
         onDamage?.Invoke();
         if (health <= 0)
         {
