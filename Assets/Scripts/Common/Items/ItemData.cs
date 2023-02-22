@@ -31,6 +31,7 @@ public class ItemData : ScriptableObject
 	public string description;
 	public Sprite icon;
 	public bool allowMultiple;
+	public bool equipable;
 
 	public ItemType itemType;
 	public UsageType usageType;
