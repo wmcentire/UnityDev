@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 222be85be245ffb4cace2a2ff70eb8c9, type: 3}
-  m_Name: FootStep
+  m_Name: HitSFX
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: 27916d55958fa404f8b1dc6fcaa006db, type: 3}
-  volume: 0.516
-  volumeRandom: 0.078
+  - {fileID: 8300000, guid: df5ef0a15f3753b4caf75b11c1fac052, type: 3}
+  volume: 1
+  volumeRandom: 0
   pitch: 0
-  pitchRandom: 5.14
-  spacialBlend: 0
+  pitchRandom: 12
+  spacialBlend: 0.509
   loop: 0
   type: 0

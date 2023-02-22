@@ -4,32 +4,37 @@ using UnityEngine;
 
 public abstract class Spawner : MonoBehaviour
 {
-    [Range(1, 10)] public float minTime = 3;
-    [Range(1, 10)] public float maxTime = 5;
-    [Range(1, 100)] public float radius = 2;
-    public Transform spawnLocation = null;
-    public GameObject[] prefabs;
+    [SerializeField] private float spawnMinTime;
+    [SerializeField] private float spawnMaxTime;
+    [SerializeField] private bool enableOnAwake = true;
 
-    float spawnTimer = 0;
+    public bool spawnEnabled { get; set; }
+
+    private float spawnTimer;
 
     protected void Start()
     {
-        spawnTimer = Random.Range(minTime, maxTime);
+        // set initial timer
+        spawnTimer = Random.Range(spawnMinTime, spawnMaxTime);
+        spawnEnabled = enableOnAwake;
     }
-
-    public abstract void Clear();
-
-    public abstract void Spawn();
 
     void Update()
     {
-        spawnTimer -= Time.deltaTime;
-        if (spawnTimer <= 0)
-        {
-            spawnTimer = Random.Range(minTime, maxTime);
+        if (!spawnEnabled) return;
 
-            Vector3 position = spawnLocation.position + Quaternion.AngleAxis(Random.value * 360.0f, Vector3.up) * (Vector3.forward * radius);
-            Instantiate(prefabs[Random.RandomRange(0,prefabs.Length)], position, Quaternion.identity);
+        // decrement sapwn timer
+        spawnTimer -= Time.deltaTime;
+        if (spawnTimer < 0)
+        {
+            // reset spawn timer and spawn
+            spawnTimer = Random.Range(spawnMinTime, spawnMaxTime);
+            Spawn();
         }
+
     }
+
+    public abstract void Spawn();
+    public abstract void Clear();
+
 }

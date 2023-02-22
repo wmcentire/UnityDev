@@ -11,6 +11,7 @@ public class EnemyCharacter : MonoBehaviour
     private Camera mainCamera;
     private NavMeshAgent navMeshAgent;
     private Transform target;
+    private bool isDead = false;
     
 
     void Start()
@@ -24,19 +25,16 @@ public class EnemyCharacter : MonoBehaviour
     
     void Update()
     {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        //    if(Physics.Raycast(ray, out RaycastHit hit))
-        //    {
-        //        navMeshAgent.SetDestination(hit.point);
-        //    }
-        //}
-        navMeshAgent.SetDestination(target.position);
+        animator.SetFloat("Speed",navMeshAgent.velocity.magnitude);
+        if (!isDead)
+        {
+            navMeshAgent.SetDestination(target.position);
+        }
 
     }
     void OnDeath()
     {
+        isDead = true;
         StartCoroutine(Death());
     }
 

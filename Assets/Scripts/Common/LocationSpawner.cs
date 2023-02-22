@@ -14,21 +14,22 @@ public class LocationSpawner : Spawner
 
     private new void Start()
     {
-        // call spawner parent start 
+        // call spawner parent start
         base.Start();
-        // get all transform children under this game object 
-        // gets parent transform also, uses linq to exclude parent 
+        // get all transform children under this game object
         locations = transform.GetComponentsInChildren<Transform>().Where(t => t != transform).ToArray();
     }
+
     public override void Clear()
     {
 
     }
+
     public override void Spawn()
     {
-        // spawn at random location 
-        Transform t = locations[Random.Range(0,locations.Length - 1)];
-        Instantiate(spawnPrefab, t.transform.position, t.transform.rotation);
+        // spawn at random location
+        Transform t = locations[Random.Range(0, locations.Length)];
+        Instantiate(spawnPrefab, t.position, t.rotation);
     }
 
 }
