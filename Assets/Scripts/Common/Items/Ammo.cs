@@ -17,8 +17,8 @@ public class Ammo : MonoBehaviour
 		// create impact prefab
 		if (ammoData.impactPrefab != null)
 		{
-			Instantiate(ammoData.impactPrefab, target.transform.position, target.transform.rotation);
-		}
+            Instantiate(ammoData.impactPrefab, transform.position, transform.rotation);
+        }
 
 		// destroy game object
 		if (ammoData.destroyOnImpact)

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29674a3e60cba604fad0f994f3794be9, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  id: 
+  id: Sword
   description: 
   icon: {fileID: 0}
   allowMultiple: 0
+  equipable: 1
   itemType: 0
   usageType: 0
   animTriggerName: Attack

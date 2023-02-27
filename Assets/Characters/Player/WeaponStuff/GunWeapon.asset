@@ -16,6 +16,7 @@ MonoBehaviour:
   description: 
   icon: {fileID: 0}
   allowMultiple: 0
+  equipable: 1
   itemType: 0
   usageType: 1
   animTriggerName: 
@@ -24,4 +25,4 @@ MonoBehaviour:
   fireRate: 0.2
   spread: {x: 0.1, y: 0.1, z: 0.1}
   rounds: 0
-  ammoPrefab: {fileID: 7142318345068634439, guid: be8f336be7bc24c4ba308c67afad5565, type: 3}
+  ammoPrefab: {fileID: 7142318345068634439, guid: 5a4e76917bb81b646bde0e3bb3b56289, type: 3}

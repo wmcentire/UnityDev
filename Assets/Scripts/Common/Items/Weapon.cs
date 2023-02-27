@@ -22,6 +22,7 @@ public class Weapon : Item
 	{
 		base.Equip();
 		weaponReady = true;
+		//if (weaponData.animTriggerName) ;
 	}
 
 	public override void Unequip()
